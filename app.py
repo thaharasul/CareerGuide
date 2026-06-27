@@ -447,4 +447,4 @@ def server_error(error):
 
 if __name__ == '__main__':
     # Run the Flask development server
-    app.run(debug=True, host='localhost', port=5000)
+    app.run(debug=True, host='0.0.0.0')
