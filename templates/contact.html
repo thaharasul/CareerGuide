@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Career Guidance System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+        <div class="container">
+            <a class="navbar-brand navbar-brand-custom" href="/">
+                <span class="brand-icon">🚀</span>CareerGuide
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom" href="/#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom" href="/assessment">Assessment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom active" href="/contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <!-- Header -->
+            <div class="contact-header text-center mb-5">
+                <h1 class="page-title">Get In Touch With Us</h1>
+                <p class="page-subtitle">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+            </div>
+
+            <div class="row mt-5">
+                <!-- Contact Information -->
+                <div class="col-lg-4 mb-4">
+                    <div class="contact-info-container">
+                        <!-- Email Contact -->
+                        <div class="contact-info-card">
+                            <div class="contact-icon">📧</div>
+                            <h5 class="contact-title">Email Us</h5>
+                            <p class="contact-detail"><a href="mailto:info@careerguide.com">info@careerguide.com</a></p>
+                            <p class="contact-detail"><a href="mailto:support@careerguide.com">support@careerguide.com</a></p>
+                            <p class="contact-text">We typically respond within 24 hours</p>
+                        </div>
+
+                        <!-- Phone Contact -->
+                        <div class="contact-info-card">
+                            <div class="contact-icon">📞</div>
+                            <h5 class="contact-title">Call Us</h5>
+                            <p class="contact-detail"><a href="tel:+911234567890">+91-1234-567-890</a></p>
+                            <p class="contact-detail"><a href="tel:+911234567891">+91-1234-567-891</a></p>
+                            <p class="contact-text">Monday to Friday: 9 AM - 6 PM IST</p>
+                        </div>
+
+                        <!-- Address Contact -->
+                        <div class="contact-info-card">
+                            <div class="contact-icon">📍</div>
+                            <h5 class="contact-title">Visit Us</h5>
+                            <p class="contact-detail">Career Guidance Center<br>Mumbai, Maharashtra<br>India - 400001</p>
+                            <p class="contact-text">Monday to Friday: 10 AM - 5 PM</p>
+                        </div>
+
+                        <!-- Social Media -->
+                        <div class="contact-info-card">
+                            <div class="contact-icon">🌐</div>
+                            <h5 class="contact-title">Follow Us</h5>
+                            <div class="social-links-contact">
+                                <a href="#" class="social-link-contact">Facebook</a>
+                                <a href="#" class="social-link-contact">Twitter</a>
+                                <a href="#" class="social-link-contact">LinkedIn</a>
+                                <a href="#" class="social-link-contact">Instagram</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="col-lg-8">
+                    <div class="contact-form-container">
+                        <h3 class="form-title mb-4">Send us a Message</h3>
+                        
+                        <!-- Success Message -->
+                        <div id="successMessage" class="alert alert-success alert-dismissible fade" role="alert" style="display: none;">
+                            <strong>Success!</strong> Your message has been sent successfully. We'll get back to you soon.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                        <!-- Error Message -->
+                        <div id="errorMessage" class="alert alert-danger alert-dismissible fade" role="alert" style="display: none;">
+                            <strong>Error!</strong> <span id="errorText"></span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                        <!-- Contact Form -->
+                        <form id="contactForm" class="contact-form">
+                            <!-- Name Field -->
+                            <div class="form-group-custom mb-4">
+                                <label for="contactName" class="form-label-custom">Full Name *</label>
+                                <input type="text" class="form-control-custom" id="contactName" name="name" placeholder="Enter your full name" required>
+                                <small class="form-error-text" id="nameError"></small>
+                            </div>
+
+                            <!-- Email Field -->
+                            <div class="form-group-custom mb-4">
+                                <label for="contactEmail" class="form-label-custom">Email Address *</label>
+                                <input type="email" class="form-control-custom" id="contactEmail" name="email" placeholder="Enter your email address" required>
+                                <small class="form-error-text" id="emailError"></small>
+                            </div>
+
+                            <!-- Phone Field (Optional) -->
+                            <div class="form-group-custom mb-4">
+                                <label for="contactPhone" class="form-label-custom">Phone Number (Optional)</label>
+                                <input type="tel" class="form-control-custom" id="contactPhone" name="phone" placeholder="Enter your phone number">
+                                <small class="form-helper-text">Include country code if international</small>
+                            </div>
+
+                            <!-- Subject Field -->
+                            <div class="form-group-custom mb-4">
+                                <label for="contactSubject" class="form-label-custom">Subject *</label>
+                                <select class="form-control-custom" id="contactSubject" name="subject" required>
+                                    <option value="">-- Select Subject --</option>
+                                    <option value="General Inquiry">General Inquiry</option>
+                                    <option value="Technical Support">Technical Support</option>
+                                    <option value="Career Guidance">Career Guidance Query</option>
+                                    <option value="Partnership">Partnership Opportunity</option>
+                                    <option value="Feedback">Feedback</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <small class="form-error-text" id="subjectError"></small>
+                            </div>
+
+                            <!-- Message Field -->
+                            <div class="form-group-custom mb-4">
+                                <label for="contactMessage" class="form-label-custom">Message *</label>
+                                <textarea class="form-control-custom textarea-custom" id="contactMessage" name="message" rows="6" placeholder="Please share your message, questions, or feedback" required></textarea>
+                                <small class="form-helper-text">Minimum 10 characters required</small>
+                                <small class="form-error-text" id="messageError"></small>
+                            </div>
+
+                            <!-- Checkbox for communication preference -->
+                            <div class="form-group-custom mb-4">
+                                <div class="form-check-custom">
+                                    <input class="form-check-input-custom" type="checkbox" id="communicationPreference" name="communication" value="yes">
+                                    <label class="form-check-label-custom" for="communicationPreference">
+                                        I agree to receive updates and responses via email
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Loading Spinner -->
+                            <div id="loadingSpinner" class="spinner-container" style="display: none;">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <p>Sending your message...</p>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="form-buttons">
+                                <button type="submit" class="btn btn-primary btn-submit btn-lg" id="contactSubmitBtn">Send Message</button>
+                                <a href="/" class="btn btn-outline-secondary btn-lg">Back to Home</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Section -->
+            <div class="row mt-5 pt-5">
+                <div class="col-12">
+                    <h3 class="section-title text-center mb-4">Our Location</h3>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.823286474613!2d72.82765!3d19.08279!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9d2e0c0c0c1%3A0x0!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1234567890" width="100%" height="400" style="border:0; border-radius: 15px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="row mt-5 pt-5">
+                <div class="col-lg-8 mx-auto">
+                    <h3 class="section-title text-center mb-4">Frequently Asked Questions</h3>
+                    <div class="accordion accordion-custom" id="contactFaq">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#contactFaq1" aria-expanded="true" aria-controls="contactFaq1">
+                                    How quickly will I receive a response?
+                                </button>
+                            </h2>
+                            <div id="contactFaq1" class="accordion-collapse collapse show" data-bs-parent="#contactFaq">
+                                <div class="accordion-body">
+                                    We aim to respond to all inquiries within 24 business hours. During holidays, it may take up to 48 hours.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#contactFaq2" aria-expanded="false" aria-controls="contactFaq2">
+                                    Can I schedule a consultation?
+                                </button>
+                            </h2>
+                            <div id="contactFaq2" class="accordion-collapse collapse" data-bs-parent="#contactFaq">
+                                <div class="accordion-body">
+                                    Yes! Contact us through this form or call us directly to schedule a one-on-one career consultation with our counselors.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#contactFaq3" aria-expanded="false" aria-controls="contactFaq3">
+                                    Is there any charge for career consultation?
+                                </button>
+                            </h2>
+                            <div id="contactFaq3" class="accordion-collapse collapse" data-bs-parent="#contactFaq">
+                                <div class="accordion-body">
+                                    Our initial career assessment and guidance through the platform are completely free. Premium consultation services are available at affordable rates.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#contactFaq4" aria-expanded="false" aria-controls="contactFaq4">
+                                    Can I reach you on weekends?
+                                </button>
+                            </h2>
+                            <div id="contactFaq4" class="accordion-collapse collapse" data-bs-parent="#contactFaq">
+                                <div class="accordion-body">
+                                    Our office is open Monday to Friday, 9 AM to 6 PM IST. For urgent matters, you can email us anytime and we'll get back to you as soon as possible.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-3 mb-4">
+                    <h5 class="footer-title">CareerGuide</h5>
+                    <p class="footer-text">Your intelligent career guidance partner for finding the perfect path forward.</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/assessment">Assessment</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="footer-title">Contact Info</h5>
+                    <p class="footer-text">
+                        📧 Email: info@careerguide.com<br>
+                        📞 Phone: +91-1234-567-890<br>
+                        📍 Address: Mumbai, India
+                    </p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="footer-title">Follow Us</h5>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="footer-copyright">&copy; 2024 Career Guidance System. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="footer-text">
+                        <a href="#" class="footer-link">Privacy Policy</a> | 
+                        <a href="#" class="footer-link">Terms of Service</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Show loading spinner
+            document.getElementById('loadingSpinner').style.display = 'flex';
+            document.getElementById('contactSubmitBtn').disabled = true;
+            
+            // Hide previous messages
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'none';
+            
+            // Prepare form data
+            const formData = new FormData(this);
+            
+            try {
+                // Submit form
+                const response = await fetch('/submit-contact', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                document.getElementById('loadingSpinner').style.display = 'none';
+                document.getElementById('contactSubmitBtn').disabled = false;
+                
+                if (data.success) {
+                    // Reset form
+                    document.getElementById('contactForm').reset();
+                    // Show success message
+                    document.getElementById('successMessage').style.display = 'block';
+                    window.scrollTo(0, 0);
+                } else {
+                    // Show error
+                    document.getElementById('errorText').textContent = data.errors.join(', ');
+                    document.getElementById('errorMessage').style.display = 'block';
+                    window.scrollTo(0, 0);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('loadingSpinner').style.display = 'none';
+                document.getElementById('contactSubmitBtn').disabled = false;
+                document.getElementById('errorText').textContent = 'An error occurred. Please try again.';
+                document.getElementById('errorMessage').style.display = 'block';
+                window.scrollTo(0, 0);
+            }
+        });
+    </script>
+</body>
+</html>

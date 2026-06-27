@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Assessment - Career Guidance System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+        <div class="container">
+            <a class="navbar-brand navbar-brand-custom" href="/">
+                <span class="brand-icon">🚀</span>CareerGuide
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom" href="/#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom active" href="/assessment">Assessment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom" href="/contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Assessment Section -->
+    <section class="assessment-section">
+        <div class="container">
+            <div class="assessment-header text-center mb-5">
+                <h1 class="page-title">Career Assessment Questionnaire</h1>
+                <p class="page-subtitle">Answer these questions honestly to get accurate career recommendations</p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" id="formProgress"></div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <!-- Assessment Form -->
+                    <form id="assessmentForm" class="assessment-form">
+                        <!-- Full Name Field -->
+                        <div class="form-group-custom mb-4">
+                            <label for="fullName" class="form-label-custom">Full Name *</label>
+                            <input type="text" class="form-control-custom" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                            <small class="form-error-text" id="fullNameError"></small>
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="form-group-custom mb-4">
+                            <label for="email" class="form-label-custom">Email Address *</label>
+                            <input type="email" class="form-control-custom" id="email" name="email" placeholder="Enter your email address" required>
+                            <small class="form-error-text" id="emailError"></small>
+                        </div>
+
+                        <!-- Highest Qualification -->
+                        <div class="form-group-custom mb-4">
+                            <label for="qualification" class="form-label-custom">Highest Qualification *</label>
+                            <select class="form-control-custom" id="qualification" name="qualification" required>
+                                <option value="">-- Select Qualification --</option>
+                                <option value="10th Pass">10th Pass</option>
+                                <option value="12th Pass">12th Pass</option>
+                                <option value="Diploma">Diploma</option>
+                                <option value="Bachelor's Degree">Bachelor's Degree</option>
+                                <option value="Master's Degree">Master's Degree</option>
+                                <option value="Professional Degree">Professional Degree (MBBS, B.Tech, etc.)</option>
+                            </select>
+                            <small class="form-error-text" id="qualificationError"></small>
+                        </div>
+
+                        <!-- Age Field -->
+                        <div class="form-group-custom mb-4">
+                            <label for="age" class="form-label-custom">Age *</label>
+                            <input type="number" class="form-control-custom" id="age" name="age" placeholder="Enter your age" min="13" max="80" required>
+                            <small class="form-helper-text">Must be between 13 and 80 years</small>
+                            <small class="form-error-text" id="ageError"></small>
+                        </div>
+
+                        <!-- Gender Selection -->
+                        <div class="form-group-custom mb-4">
+                            <label class="form-label-custom">Gender *</label>
+                            <div class="gender-options">
+                                <div class="form-check-custom">
+                                    <input class="form-check-input-custom" type="radio" name="gender" id="male" value="Male" required>
+                                    <label class="form-check-label-custom" for="male">Male</label>
+                                </div>
+                                <div class="form-check-custom">
+                                    <input class="form-check-input-custom" type="radio" name="gender" id="female" value="Female" required>
+                                    <label class="form-check-label-custom" for="female">Female</label>
+                                </div>
+                                <div class="form-check-custom">
+                                    <input class="form-check-input-custom" type="radio" name="gender" id="other" value="Other" required>
+                                    <label class="form-check-label-custom" for="other">Other</label>
+                                </div>
+                            </div>
+                            <small class="form-error-text" id="genderError"></small>
+                        </div>
+
+                        <!-- Interest Selection -->
+                        <div class="form-group-custom mb-4">
+                            <label for="interest" class="form-label-custom">Select Your Primary Interest *</label>
+                            <select class="form-control-custom" id="interest" name="interest" required>
+                                <option value="">-- Select Interest --</option>
+                                <option value="Programming">Programming & Technology</option>
+                                <option value="Medical">Medical & Healthcare</option>
+                                <option value="Business">Business & Entrepreneurship</option>
+                                <option value="Arts">Arts & Creative Fields</option>
+                                <option value="Government">Government & Public Service</option>
+                                <option value="Mechanical">Mechanical Engineering</option>
+                                <option value="Electronics">Electronics & Robotics</option>
+                            </select>
+                            <small class="form-helper-text">Choose the field that interests you the most</small>
+                            <small class="form-error-text" id="interestError"></small>
+                        </div>
+
+                        <!-- Skills Selection -->
+                        <div class="form-group-custom mb-4">
+                            <label class="form-label-custom">Select Your Skills (Optional)</label>
+                            <div class="skills-container">
+                                <div class="skill-checkbox">
+                                    <input type="checkbox" id="python" name="skills" value="Python">
+                                    <label for="python">Python Programming</label>
+                                </div>
+                                <div class="skill-checkbox">
+                                    <input type="checkbox" id="java" name="skills" value="Java">
+                                    <label for="java">Java Programming</label>
+                                </div>
+                                <div class="skill-checkbox">
+                                    <input type="checkbox" id="javascript" name="skills" value="JavaScript">
+                                    <label for="javascript">JavaScript/Web Dev</label>
+                                </div>
+                                <div class="skill-checkbox">
+                                    <input type="checkbox" id="data" name="skills" value="Data Analysis">
+                                    <label for="data">Data Analysis</label>
+                                </div>
+                                <div class="skill-checkbox">
+                                    <input type="checkbox" id="ml" name="skills" value="Machine Learning">
+                                    <label for="ml">Machine Learning</label>
+                                </div>
+                                <div class="skill-checkbox">
+                                    <input type="checkbox" id="communication" name="skills" value="Communication">
+                                    <label for="communication">Communication</label>
+                                </div>
+                                <div class="skill-checkbox">
+                                    <input type="checkbox" id="leadership" name="skills" value="Leadership">
+                                    <label for="leadership">Leadership</label>
+                                </div>
+                                <div class="skill-checkbox">
+                                    <input type="checkbox" id="creativity" name="skills" value="Creativity">
+                                    <label for="creativity">Creativity & Design</label>
+                                </div>
+                                <div class="skill-checkbox">
+                                    <input type="checkbox" id="problem" name="skills" value="Problem Solving">
+                                    <label for="problem">Problem Solving</label>
+                                </div>
+                                <div class="skill-checkbox">
+                                    <input type="checkbox" id="management" name="skills" value="Project Management">
+                                    <label for="management">Project Management</label>
+                                </div>
+                            </div>
+                            <small class="form-helper-text">Select all skills that apply to you</small>
+                        </div>
+
+                        <!-- Work Style Preference -->
+                        <div class="form-group-custom mb-4">
+                            <label for="workStyle" class="form-label-custom">Preferred Work Style *</label>
+                            <select class="form-control-custom" id="workStyle" name="workStyle" required>
+                                <option value="">-- Select Work Style --</option>
+                                <option value="Team-based">Team-based Collaboration</option>
+                                <option value="Independent">Independent & Solo Work</option>
+                                <option value="Mixed">Mixed - Both Team and Independent</option>
+                                <option value="Client-facing">Client-facing Interaction</option>
+                                <option value="Research">Research & Innovation</option>
+                            </select>
+                            <small class="form-helper-text">Choose how you prefer to work</small>
+                            <small class="form-error-text" id="workStyleError"></small>
+                        </div>
+
+                        <!-- Form Errors Display -->
+                        <div id="formErrors" class="alert alert-danger alert-dismissible fade" role="alert" style="display: none;">
+                            <strong>Please fix the following errors:</strong>
+                            <ul id="errorsList" class="mb-0 mt-2"></ul>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                        <!-- Loading Spinner -->
+                        <div id="loadingSpinner" class="spinner-container" style="display: none;">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p>Processing your assessment...</p>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="form-buttons mt-5">
+                            <button type="submit" class="btn btn-primary btn-submit btn-lg" id="submitBtn">Get Career Recommendations</button>
+                            <a href="/" class="btn btn-outline-secondary btn-lg">Back to Home</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-3 mb-4">
+                    <h5 class="footer-title">CareerGuide</h5>
+                    <p class="footer-text">Your intelligent career guidance partner for finding the perfect path forward.</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/assessment">Assessment</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="footer-title">Contact Info</h5>
+                    <p class="footer-text">
+                        📧 Email: info@careerguide.com<br>
+                        📞 Phone: +91-1234-567-890<br>
+                        📍 Address: Mumbai, India
+                    </p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="footer-title">Follow Us</h5>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="footer-copyright">&copy; 2024 Career Guidance System. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="footer-text">
+                        <a href="#" class="footer-link">Privacy Policy</a> | 
+                        <a href="#" class="footer-link">Terms of Service</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        // Assessment form handling
+        document.getElementById('assessmentForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Show loading spinner
+            document.getElementById('loadingSpinner').style.display = 'flex';
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('formErrors').style.display = 'none';
+            
+            // Prepare form data
+            const formData = new FormData(this);
+            
+            try {
+                // Submit form
+                const response = await fetch('/submit-assessment', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Store data in session storage for result page
+                    sessionStorage.setItem('careerResult', JSON.stringify(data));
+                    // Redirect to result page
+                    window.location.href = '/result';
+                } else {
+                    // Display errors
+                    showFormErrors(data.errors);
+                    document.getElementById('loadingSpinner').style.display = 'none';
+                    document.getElementById('submitBtn').disabled = false;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showFormErrors(['An error occurred. Please try again.']);
+                document.getElementById('loadingSpinner').style.display = 'none';
+                document.getElementById('submitBtn').disabled = false;
+            }
+        });
+        
+        function showFormErrors(errors) {
+            const errorsList = document.getElementById('errorsList');
+            errorsList.innerHTML = '';
+            errors.forEach(error => {
+                const li = document.createElement('li');
+                li.textContent = error;
+                errorsList.appendChild(li);
+            });
+            document.getElementById('formErrors').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+        
+        // Update progress bar
+        document.querySelectorAll('input, select').forEach(element => {
+            element.addEventListener('change', updateProgressBar);
+            element.addEventListener('input', updateProgressBar);
+        });
+        
+        function updateProgressBar() {
+            const formInputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="number"], select, input[type="radio"]:checked, input[type="checkbox"]:checked');
+            const totalFields = document.querySelectorAll('input[type="text"], input[type="email"], input[type="number"], select, input[type="radio"], input[type="checkbox"]').length;
+            const percentage = (formInputs.length / totalFields) * 100;
+            document.getElementById('formProgress').style.width = percentage + '%';
+        }
+    </script>
+</body>
+</html>

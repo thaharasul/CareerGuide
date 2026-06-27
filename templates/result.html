@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Results - Career Guidance System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+        <div class="container">
+            <a class="navbar-brand navbar-brand-custom" href="/">
+                <span class="brand-icon">🚀</span>CareerGuide
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom" href="/#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom" href="/assessment">Assessment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom" href="/contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Results Section -->
+    <section class="results-section">
+        <div class="container">
+            <!-- Header -->
+            <div class="results-header text-center mb-5">
+                <h1 class="page-title">Your Career Recommendation</h1>
+                <p class="page-subtitle">Based on your assessment and preferences</p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <!-- Main Career Card -->
+                    <div class="career-result-card">
+                        <div class="career-header-badge">
+                            <span class="badge-label">Recommended For You</span>
+                        </div>
+                        
+                        <div class="career-title-section">
+                            <h2 class="career-title" id="careerName">--</h2>
+                            <p class="career-user-info" id="userInfo">--</p>
+                        </div>
+
+                        <div class="career-description-box">
+                            <h4 class="section-subtitle">Career Overview</h4>
+                            <p id="careerDescription" class="career-description">--</p>
+                        </div>
+
+                        <!-- Career Details Grid -->
+                        <div class="row mt-5">
+                            <!-- Required Skills -->
+                            <div class="col-md-6 mb-4">
+                                <div class="info-card">
+                                    <div class="info-icon">🎯</div>
+                                    <h5 class="info-title">Required Skills</h5>
+                                    <ul class="skills-list" id="requiredSkills">
+                                        <li>--</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Your Selected Skills -->
+                            <div class="col-md-6 mb-4">
+                                <div class="info-card">
+                                    <div class="info-icon">✨</div>
+                                    <h5 class="info-title">Your Skills</h5>
+                                    <p id="yourSkills" class="skills-text">--</p>
+                                </div>
+                            </div>
+
+                            <!-- Higher Studies -->
+                            <div class="col-md-6 mb-4">
+                                <div class="info-card">
+                                    <div class="info-icon">🎓</div>
+                                    <h5 class="info-title">Higher Studies Required</h5>
+                                    <p id="higherStudies" class="info-text">--</p>
+                                </div>
+                            </div>
+
+                            <!-- Salary Information -->
+                            <div class="col-md-6 mb-4">
+                                <div class="info-card">
+                                    <div class="info-icon">💰</div>
+                                    <h5 class="info-title">Average Salary</h5>
+                                    <p id="salary" class="salary-text">--</p>
+                                </div>
+                            </div>
+                            <!-- Future Scope -->
+                            <div class="col-12 mb-4">
+                                <div class="info-card">
+                                    <div class="info-icon">🚀</div>
+                                    <h5 class="info-title">Future Scope & Growth</h5>
+                                    <p id="futureScope" class="info-text">--</p>
+                                </div>
+                            </div>
+
+                            <!-- Learning Resources -->
+                            <div class="col-12 mb-4">
+                                <div class="info-card">
+                                    <div class="info-icon">📚</div>
+                                    <h5 class="info-title">Learning Resources</h5>
+                                    <ul class="resources-list" id="learningResources">
+                                        <li>--</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="result-actions mt-5">
+                            <a href="/assessment" class="btn btn-primary btn-lg">Take Assessment Again</a>
+                            <a href="/contact" class="btn btn-outline-primary btn-lg">Get More Help</a>
+                            <a href="/" class="btn btn-outline-secondary btn-lg">Back to Home</a>
+                        </div>
+                    </div>
+
+                    <!-- Additional Recommendations Section -->
+                    <div class="mt-5 pt-5">
+                        <h3 class="section-title text-center mb-4">Next Steps to Achieve This Career</h3>
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <div class="step-card">
+                                    <div class="step-number">1</div>
+                                    <h5>Complete Your Education</h5>
+                                    <p>Pursue the required qualifications and certifications for this career path.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="step-card">
+                                    <div class="step-number">2</div>
+                                    <h5>Develop Key Skills</h5>
+                                    <p>Focus on building the technical and soft skills needed through courses and practice.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="step-card">
+                                    <div class="step-number">3</div>
+                                    <h5>Gain Experience</h5>
+                                    <p>Seek internships, projects, and work experience to build your professional portfolio.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="step-card">
+                                    <div class="step-number">4</div>
+                                    <h5>Network & Connect</h5>
+                                    <p>Build relationships with professionals in your chosen field for mentorship and opportunities.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="step-card">
+                                    <div class="step-number">5</div>
+                                    <h5>Keep Learning</h5>
+                                    <p>Stay updated with industry trends and continue professional development throughout your career.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="step-card">
+                                    <div class="step-number">6</div>
+                                    <h5>Apply & Succeed</h5>
+                                    <p>Apply for positions and showcase your skills to start your career journey.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Section -->
+                    <div class="mt-5 pt-5">
+                        <h3 class="section-title text-center mb-4">Frequently Asked Questions</h3>
+                        <div class="accordion accordion-custom" id="faqAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                                        How accurate is this recommendation?
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Our recommendation engine analyzes multiple factors including your interests, skills, and work preferences. While highly accurate, we recommend combining this guidance with professional career counseling for the best results.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                                        Can I change my career after getting this recommendation?
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Absolutely! This recommendation is based on your current skills and interests. Career paths can change, and you can always retake the assessment or explore different options.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                                        How long does it take to achieve this career?
+                                    </button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        The time required depends on your current qualification and the specific career. Most careers require 2-6 years of education and training after your current level. Refer to the "Higher Studies" section for specific requirements.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                                        Where can I learn the required skills?
+                                    </button>
+                                </h2>
+                                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Check the "Learning Resources" section for recommended platforms and courses. Many are available online with flexible learning schedules. You can also pursue formal education through universities and colleges.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                                        Is this salary information applicable worldwide?
+                                    </button>
+                                </h2>
+                                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        The salary information provided is primarily based on Indian market data (in INR). International salaries may vary significantly based on location, experience, and organization.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-3 mb-4">
+                    <h5 class="footer-title">CareerGuide</h5>
+                    <p class="footer-text">Your intelligent career guidance partner for finding the perfect path forward.</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/assessment">Assessment</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="footer-title">Contact Info</h5>
+                    <p class="footer-text">
+                        📧 Email: info@careerguide.com<br>
+                        📞 Phone: +91-1234-567-890<br>
+                        📍 Address: Mumbai, India
+                    </p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="footer-title">Follow Us</h5>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="footer-copyright">&copy; 2024 Career Guidance System. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="footer-text">
+                        <a href="#" class="footer-link">Privacy Policy</a> | 
+                        <a href="#" class="footer-link">Terms of Service</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        // Display career results from session storage
+        document.addEventListener('DOMContentLoaded', function() {
+            const careerResult = JSON.parse(sessionStorage.getItem('careerResult'));
+            
+            if (!careerResult) {
+                window.location.href = '/assessment';
+                return;
+            }
+            
+            // Populate career information
+            document.getElementById('careerName').textContent = careerResult.career;
+            document.getElementById('userInfo').textContent = `Recommended for ${careerResult.fullName}`;
+            document.getElementById('careerDescription').textContent = careerResult.description;
+            document.getElementById('higherStudies').textContent = careerResult.higher_studies;
+            document.getElementById('salary').textContent = careerResult.salary;
+            document.getElementById('futureScope').textContent = careerResult.scope;
+            document.getElementById('yourSkills').textContent = careerResult.skillsSelected || 'Not specified';
+            
+            // Populate skills list
+            const skillsList = document.getElementById('requiredSkills');
+            skillsList.innerHTML = '';
+            careerResult.skills.forEach(skill => {
+                const li = document.createElement('li');
+                li.textContent = skill;
+                skillsList.appendChild(li);
+            });
+            
+            // Populate resources list
+            const resourcesList = document.getElementById('learningResources');
+            resourcesList.innerHTML = '';
+            careerResult.resources.forEach(resource => {
+                const li = document.createElement('li');
+                li.textContent = resource;
+                resourcesList.appendChild(li);
+            });
+            
+            // Add animation to cards
+            const cards = document.querySelectorAll('.info-card, .step-card');
+            cards.forEach((card, index) => {
+                card.style.animation = `fadeInUp 0.6s ease-out ${index * 0.1}s both`;
+            });
+        });
+    </script>
+</body>
+</html>
